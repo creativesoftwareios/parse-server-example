@@ -1,8 +1,5 @@
 // Example express application adding the parse-server module to expose Parse
 // compatible API routes.
-import fs from 'fs'
-const resetEmail = fs.readFileSync(path.resolve('emails', 'reset-password.html'), 'utf8');
-const verifyEmail = fs.readFileSync(path.resolve('emails', 'verify-email.html'), 'utf8');
 
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
@@ -16,13 +13,13 @@ MyMailgunAdapter.prototype = Object.create(MailgunAdapter);
 
 MyMailgunAdapter.prototype.getResetPasswordEmail= function(to, resetLink) {
   return {
-    html: resetEmail.replace('<%LINK_GOES_HERE%>', resetLink),
+    html: "",
     subject: "Reset Kinetic password"
   };
 }
 MyMailgunAdapter.prototype.getVerificationEmail = function(to, verifyLink) {
   return {
-    html: verifyEmail.replace('<%LINK_GOES_HERE%>', verifyLink),
+    html: "",
     subject:  "Verify Kinetic email"
   }
 }
