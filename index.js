@@ -7,7 +7,8 @@ var path = require('path');
 var fs = require('fs');
 
 
-
+const resetEmail = fs.readFileSync(path.resolve('emails', 'reset-password.html'), 'utf8');
+const verifyEmail = fs.readFileSync(path.resolve('emails', 'verify-email.html'), 'utf8');
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
