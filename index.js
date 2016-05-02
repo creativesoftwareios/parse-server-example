@@ -66,7 +66,7 @@ var api = new ParseServer({
   //   }
 
   // },
-  mailAdapter: new MyMailgunAdapter(parseParams.appId, {
+  mailAdapter: new MyMailgunAdapter('emailTestAppId', {
        // The address that your emails come from
       fromAddress: 'parse@example.com',
       // Your domain from mailgun.com
