@@ -8,27 +8,7 @@ var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 
 
-const resetEmail = fs.readFileSync(path.resolve('emails', 'reset-password.html'), 'utf8');
-const verifyEmail = fs.readFileSync(path.resolve('emails', 'verify-email.html'), 'utf8');
 
-function MyMailgunAdapter(appId, mailApiConfig) {
-  MailgunAdapter.call(this, appId, mailApiConfig);
-}
-
-MyMailgunAdapter.prototype = Object.create(MailgunAdapter);
-
-MyMailgunAdapter.prototype.getResetPasswordEmail= function(to, resetLink) {
-  return {
-    html: resetEmail.replace('<%LINK_GOES_HERE%>', resetLink),
-    subject: "Reset Kinetic password"
-  };
-}
-MyMailgunAdapter.prototype.getVerificationEmail = function(to, verifyLink) {
-  return {
-    html: verifyEmail.replace('<%LINK_GOES_HERE%>', verifyLink),
-    subject:  "Verify Kinetic email"
-  }
-}
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -54,26 +34,18 @@ var api = new ParseServer({
   // Your apps name. This will appear in the subject and body of the emails that are sent.
   appName: 'emailtest01',
   // The email adapter
-  // emailAdapter: {
-  //   module: 'parse-server-simple-mailgun-adapter',
-  //   options: {
-      // // The address that your emails come from
-      // fromAddress: 'parse@example.com',
-      // // Your domain from mailgun.com
-      // domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
-      // // Your API key from mailgun.com
-      // apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
-  //   }
-
-  // },
-  mailAdapter: new MyMailgunAdapter('emailTestAppId', {
-       // The address that your emails come from
+  emailAdapter: {
+    module: 'parse-server-simple-mailgun-adapter',
+    options: {
+      // The address that your emails come from
       fromAddress: 'parse@example.com',
       // Your domain from mailgun.com
       domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
       // Your API key from mailgun.com
       apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
-  }),
+    }
+
+  },
   customPages: {
     invalidLink: 'https://emailtest01.herokuapp.com/parse/link_invalid.html',
     verifyEmailSuccess: 'https://emailtest01.herokuapp.com/parse/verify_email_success.html',
