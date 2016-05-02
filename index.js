@@ -1,5 +1,8 @@
 // Example express application adding the parse-server module to expose Parse
 // compatible API routes.
+import fs from 'fs'
+const resetEmail = fs.readFileSync(path.resolve('emails', 'reset-password.html'), 'utf8');
+const verifyEmail = fs.readFileSync(path.resolve('emails', 'verify-email.html'), 'utf8');
 
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
@@ -50,18 +53,23 @@ var api = new ParseServer({
   // The email adapter
   // emailAdapter: {
   //   module: 'parse-server-simple-mailgun-adapter',
-  //   options: {
-  //     // The address that your emails come from
-  //     fromAddress: 'parse@example.com',
-  //     // Your domain from mailgun.com
-  //     domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
-  //     // Your API key from mailgun.com
-  //     apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
-  //   }
-   mailAdapter: new MyMailgunAdapter('emailTestAppId', {
-    apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
-    domain:'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
-    fromAddress:'parse@example.com'
+    // options: {
+    //   // The address that your emails come from
+    //   fromAddress: 'parse@example.com',
+    //   // Your domain from mailgun.com
+    //   domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
+    //   // Your API key from mailgun.com
+    //   apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
+    // }
+   mailAdapter: new MyMailgunAdapter('emailTestAppId', 
+     options: {
+      // The address that your emails come from
+      fromAddress: 'parse@example.com',
+      // Your domain from mailgun.com
+      domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
+      // Your API key from mailgun.com
+      apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
+    }
   })
   },
   customPages: {
