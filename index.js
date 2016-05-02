@@ -4,7 +4,7 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
-
+var SimpleMailgunAdapter = require('parse-server/lib/Adapters/Email/SimpleMailgunAdapter');
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
@@ -29,17 +29,11 @@ var api = new ParseServer({
   // Your apps name. This will appear in the subject and body of the emails that are sent.
   appName: 'emailtest01',
   // The email adapter
-  emailAdapter: {
-    module: 'parse-server-simple-mailgun-adapter',
-    options: {
-      // The address that your emails come from
-      fromAddress: 'parse@example.com',
-      // Your domain from mailgun.com
-      domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
-      // Your API key from mailgun.com
-      apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
-    }
-  }
+  emailAdapter: new SimpleMailgunAdapter({
+    apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
+    domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
+    fromAddress: 'parse@example.com'
+  })
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
