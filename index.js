@@ -35,9 +35,9 @@ var api = new ParseServer({
       // The address that your emails come from
       fromAddress: 'parse@example.com',
       // Your domain from mailgun.com
-      domain: 'sandboxb6015be984e349a4a51038c5e18fc422.mailgun.org',
+      domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
       // Your API key from mailgun.com
-      apiKey: 'key-b54a309ea20924558ea6f22a007bb8ee',
+      apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
     }
   }
 });
