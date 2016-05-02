@@ -61,8 +61,7 @@ var api = new ParseServer({
     //   // Your API key from mailgun.com
     //   apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
     // }
-   mailAdapter: new MyMailgunAdapter('emailTestAppId', 
-     options: {
+   mailAdapter: new MyMailgunAdapter('emailTestAppId', {
       // The address that your emails come from
       fromAddress: 'parse@example.com',
       // Your domain from mailgun.com
