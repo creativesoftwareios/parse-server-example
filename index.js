@@ -61,15 +61,15 @@ var api = new ParseServer({
     //   // Your API key from mailgun.com
     //   apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
     // }
-   mailAdapter: new MyMailgunAdapter('emailTestAppId', {
-      // The address that your emails come from
-      fromAddress: 'parse@example.com',
-      // Your domain from mailgun.com
-      domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
-      // Your API key from mailgun.com
-      apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
-    }
-  })
+  // mailAdapter: new MyMailgunAdapter('emailTestAppId', {
+  //     // The address that your emails come from
+  //     fromAddress: 'parse@example.com',
+  //     // Your domain from mailgun.com
+  //     domain: 'sandbox93a83c6dfe1b4404a8ca7f955389701d.mailgun.org',
+  //     // Your API key from mailgun.com
+  //     apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
+  //   }
+  // })
   },
   customPages: {
     invalidLink: 'https://emailtest01.herokuapp.com/parse/link_invalid.html',
