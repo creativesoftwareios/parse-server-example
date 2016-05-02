@@ -40,6 +40,12 @@ var api = new ParseServer({
       // Your API key from mailgun.com
       apiKey: 'key-b932884f8105196fbd78e3dd3304c028',
     }
+  },
+  customPages: {
+    invalidLink: 'https://emailtest01.herokuapp.com/parse/link_invalid.html',
+    verifyEmailSuccess: 'https://emailtest01.herokuapp.com/parse/verify_email_success.html',
+    choosePassword: 'https://emailtest01.herokuapp.com/parse/new_password.html',
+    passwordResetSuccess: 'https://emailtest01.herokuapp.com/parse/sucess.html'
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
