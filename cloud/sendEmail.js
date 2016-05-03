@@ -7,7 +7,8 @@ var _ = require('underscore');
 
 Parse.Cloud.define("SendEmail", function(request, response) {
 
-var filename = 'email_template.html';
+// var filename = 'email_template.html';
+var filename = 'email_template_html.js';
 var filepath = path.join(__dirname, filename);
 var template = fs.readFileSync(filepath, 'utf8');
 
