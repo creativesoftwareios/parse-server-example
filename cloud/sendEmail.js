@@ -15,7 +15,7 @@ var htmlTemplate = fs.readFileSync(filepath, 'utf8');
 var compiled = _.template(htmlTemplate);
 var html = compiled(
     {
-       'link': request.params.toText
+       'link': "http://google.com"
     }
 );
 
