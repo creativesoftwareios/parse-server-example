@@ -5,7 +5,7 @@ var fs = require('fs');
 
 Parse.Cloud.define("SendEmail", function(request, response) {
 
-var template = fs.readFileSync('./email_template_html.js','utf8');
+var template = fs.readFileSync('./email_template.html','utf8');
 
 var data = {
   from: request.params.fromText,
