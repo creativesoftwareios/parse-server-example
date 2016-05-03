@@ -12,12 +12,15 @@ var filename = 'email_template_html.js';
 var filepath = path.join(__dirname, filename);
 var template = fs.readFileSync(filepath, 'utf8');
 
-var compiled = _.template(template);
-var html = compiled(
-    {
-      'link': request.params.fromText
-    }
-);
+// var compiled = _.template(template);
+// var html = compiled(
+//     {
+//       'link': request.params.fromText
+//     }
+// );
+
+var compiled = _.template("hello: <%= name %>");
+var html = compiled({name: 'Dimitri'});
 
 var data = {
   from: request.params.fromText,
