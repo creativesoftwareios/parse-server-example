@@ -11,18 +11,18 @@ var filename = 'email_template.html';
 var filepath = path.join(__dirname, filename);
 var template = fs.readFileSync(filepath, 'utf8');
 
-// var compiled = _.template(template);
-// var html = compiled(
-//     {
-//       'link': request.params.fromText
-//     }
-// );
+var compiled = _.template(template);
+var html = compiled(
+    {
+      'link': request.params.fromText
+    }
+);
 
 var data = {
   from: request.params.fromText,
   to: request.params.toText,
   subject: request.params.subjectText,
-  html: template
+  html: html
 };
 
 mailgun.messages().send(data, function (error, body) {
